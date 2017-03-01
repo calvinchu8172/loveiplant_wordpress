@@ -1,0 +1,748 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Single Product Page Builder\n"
+"POT-Creation-Date: 2016-06-04 15:23+0700\n"
+"PO-Revision-Date: 2016-06-04 15:23+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: /Volumes/WORK/webserver/www/wordpress/wp-content/plugins\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: dhvc-woocommerce-page\n"
+
+#: dhvc-woocommerce-page/dhvc-woocommerce-page.php:218
+#, php-format
+msgid ""
+"<strong>%s</strong> requires <strong><a href=\"codecanyon.net/item/visual-"
+"composer-page-builder-for-wordpress/242431?ref=Sitesao\" target=\"_blank"
+"\">Visual Composer</a></strong> plugin or <a href=\"http://codecanyon.net/"
+"item/cornerstone-the-wordpress-page-builder/15518868?ref=Sitesao\" target="
+"\"_blank\">Cornerstone</a> plugin to be installed and activated on your site."
+msgstr ""
+
+#: dhvc-woocommerce-page/dhvc-woocommerce-page.php:226
+#, php-format
+msgid ""
+"<strong>%s</strong> requires <strong><a href=\"http://www.woothemes.com/"
+"woocommerce/\" target=\"_blank\">WooCommerce</a></strong> plugin to be "
+"installed and activated on your site."
+msgstr ""
+
+#: dhvc-woocommerce-page/dhvc-woocommerce-page.php:239
+msgid "Edit Custom Product Template"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/admin.php:27
+msgid "Page Template"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/admin.php:41
+#: dhvc-woocommerce-page/includes/admin.php:90
+#: dhvc-woocommerce-page/includes/admin.php:121
+msgid "Select a page&hellip;"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/acf_field/definition.php:8
+msgid "WC Single Product ACF Custom Fields"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/acf_field/definition.php:46
+#: dhvc-woocommerce-page/includes/visual-composer.php:384
+msgid "Field Name"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/add_to_cart/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:134
+msgid "WC Single Product Add to Cart"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/additional_information/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:117
+msgid "WC Single Product Additional Information"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/best_selling_products/definition.php:8
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:8
+msgid "WC Sale Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/best_selling_products/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:15
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:15
+#: dhvc-woocommerce-page/includes/visual-composer.php:227
+#: dhvc-woocommerce-page/includes/visual-composer.php:274
+#: dhvc-woocommerce-page/includes/visual-composer.php:522
+#: dhvc-woocommerce-page/includes/visual-composer.php:679
+#: dhvc-woocommerce-page/includes/visual-composer.php:796
+#: dhvc-woocommerce-page/includes/visual-composer.php:855
+#: dhvc-woocommerce-page/includes/visual-composer.php:886
+#: dhvc-woocommerce-page/includes/visual-composer.php:945
+#: dhvc-woocommerce-page/includes/visual-composer.php:1021
+msgid "Product Per Page"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/best_selling_products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:16
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:16
+#: dhvc-woocommerce-page/includes/visual-composer.php:233
+#: dhvc-woocommerce-page/includes/visual-composer.php:280
+#: dhvc-woocommerce-page/includes/visual-composer.php:529
+#: dhvc-woocommerce-page/includes/visual-composer.php:609
+#: dhvc-woocommerce-page/includes/visual-composer.php:686
+#: dhvc-woocommerce-page/includes/visual-composer.php:744
+#: dhvc-woocommerce-page/includes/visual-composer.php:803
+#: dhvc-woocommerce-page/includes/visual-composer.php:862
+#: dhvc-woocommerce-page/includes/visual-composer.php:893
+#: dhvc-woocommerce-page/includes/visual-composer.php:952
+#: dhvc-woocommerce-page/includes/visual-composer.php:1028
+msgid "Columns"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/breadcrumb/definition.php:7
+msgid "WC Breadcrumb"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/cart/definition.php:8
+msgid "WC Cart"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/checkout/definition.php:8
+msgid "WC Checkout"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/custom_field/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:313
+msgid "WC Single Product Custom Field"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/custom_field/definition.php:18
+#: dhvc-woocommerce-page/includes/visual-composer.php:321
+msgid "Field key name"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/custom_field/definition.php:19
+#: dhvc-woocommerce-page/includes/visual-composer.php:325
+msgid "Enter custom field name to retrieve meta data value."
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/custom_field/definition.php:24
+#: dhvc-woocommerce-page/includes/visual-composer.php:329
+msgid "Label"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/custom_field/definition.php:25
+#: dhvc-woocommerce-page/includes/visual-composer.php:333
+msgid "Enter label to display before key value."
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/data_tabs/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:185
+msgid "WC Single Product Data Tabs"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/description/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:102
+msgid "WC Single Product Description"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/excerpt/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:85
+msgid "WC Single Product Excerpt"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:8
+msgid "WC Featured Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:20
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:20
+#: dhvc-woocommerce-page/includes/visual-composer.php:240
+#: dhvc-woocommerce-page/includes/visual-composer.php:287
+#: dhvc-woocommerce-page/includes/visual-composer.php:536
+#: dhvc-woocommerce-page/includes/visual-composer.php:616
+#: dhvc-woocommerce-page/includes/visual-composer.php:693
+#: dhvc-woocommerce-page/includes/visual-composer.php:751
+#: dhvc-woocommerce-page/includes/visual-composer.php:810
+#: dhvc-woocommerce-page/includes/visual-composer.php:900
+#: dhvc-woocommerce-page/includes/visual-composer.php:959
+#: dhvc-woocommerce-page/includes/visual-composer.php:1035
+msgid "Products Ordering"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:26
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:26
+#: dhvc-woocommerce-page/includes/visual-composer.php:246
+#: dhvc-woocommerce-page/includes/visual-composer.php:293
+#: dhvc-woocommerce-page/includes/visual-composer.php:542
+#: dhvc-woocommerce-page/includes/visual-composer.php:620
+#: dhvc-woocommerce-page/includes/visual-composer.php:697
+#: dhvc-woocommerce-page/includes/visual-composer.php:755
+#: dhvc-woocommerce-page/includes/visual-composer.php:814
+#: dhvc-woocommerce-page/includes/visual-composer.php:904
+#: dhvc-woocommerce-page/includes/visual-composer.php:963
+#: dhvc-woocommerce-page/includes/visual-composer.php:1039
+msgid "Publish Date"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:27
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:27
+#: dhvc-woocommerce-page/includes/visual-composer.php:247
+#: dhvc-woocommerce-page/includes/visual-composer.php:294
+#: dhvc-woocommerce-page/includes/visual-composer.php:543
+#: dhvc-woocommerce-page/includes/visual-composer.php:621
+#: dhvc-woocommerce-page/includes/visual-composer.php:698
+#: dhvc-woocommerce-page/includes/visual-composer.php:756
+#: dhvc-woocommerce-page/includes/visual-composer.php:815
+#: dhvc-woocommerce-page/includes/visual-composer.php:905
+#: dhvc-woocommerce-page/includes/visual-composer.php:964
+#: dhvc-woocommerce-page/includes/visual-composer.php:1040
+msgid "Modified Date"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:28
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:28
+#: dhvc-woocommerce-page/includes/visual-composer.php:248
+#: dhvc-woocommerce-page/includes/visual-composer.php:295
+#: dhvc-woocommerce-page/includes/visual-composer.php:544
+#: dhvc-woocommerce-page/includes/visual-composer.php:622
+#: dhvc-woocommerce-page/includes/visual-composer.php:699
+#: dhvc-woocommerce-page/includes/visual-composer.php:757
+#: dhvc-woocommerce-page/includes/visual-composer.php:816
+#: dhvc-woocommerce-page/includes/visual-composer.php:906
+#: dhvc-woocommerce-page/includes/visual-composer.php:965
+#: dhvc-woocommerce-page/includes/visual-composer.php:1041
+msgid "Random"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:29
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:29
+#: dhvc-woocommerce-page/includes/visual-composer.php:249
+#: dhvc-woocommerce-page/includes/visual-composer.php:296
+#: dhvc-woocommerce-page/includes/visual-composer.php:545
+#: dhvc-woocommerce-page/includes/visual-composer.php:623
+#: dhvc-woocommerce-page/includes/visual-composer.php:700
+#: dhvc-woocommerce-page/includes/visual-composer.php:758
+#: dhvc-woocommerce-page/includes/visual-composer.php:817
+#: dhvc-woocommerce-page/includes/visual-composer.php:907
+#: dhvc-woocommerce-page/includes/visual-composer.php:966
+#: dhvc-woocommerce-page/includes/visual-composer.php:1042
+msgid "Alphabetic"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:30
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:30
+#: dhvc-woocommerce-page/includes/visual-composer.php:250
+#: dhvc-woocommerce-page/includes/visual-composer.php:297
+#: dhvc-woocommerce-page/includes/visual-composer.php:546
+#: dhvc-woocommerce-page/includes/visual-composer.php:624
+#: dhvc-woocommerce-page/includes/visual-composer.php:701
+#: dhvc-woocommerce-page/includes/visual-composer.php:759
+#: dhvc-woocommerce-page/includes/visual-composer.php:818
+#: dhvc-woocommerce-page/includes/visual-composer.php:908
+#: dhvc-woocommerce-page/includes/visual-composer.php:967
+#: dhvc-woocommerce-page/includes/visual-composer.php:1043
+msgid "Popularity"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:31
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:31
+#: dhvc-woocommerce-page/includes/visual-composer.php:251
+#: dhvc-woocommerce-page/includes/visual-composer.php:298
+#: dhvc-woocommerce-page/includes/visual-composer.php:547
+#: dhvc-woocommerce-page/includes/visual-composer.php:625
+#: dhvc-woocommerce-page/includes/visual-composer.php:702
+#: dhvc-woocommerce-page/includes/visual-composer.php:760
+#: dhvc-woocommerce-page/includes/visual-composer.php:819
+#: dhvc-woocommerce-page/includes/visual-composer.php:909
+#: dhvc-woocommerce-page/includes/visual-composer.php:968
+#: dhvc-woocommerce-page/includes/visual-composer.php:1044
+msgid "Rate"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/featured_products/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/sale_products/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:32
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:32
+#: dhvc-woocommerce-page/includes/visual-composer.php:252
+#: dhvc-woocommerce-page/includes/visual-composer.php:299
+#: dhvc-woocommerce-page/includes/visual-composer.php:548
+#: dhvc-woocommerce-page/includes/visual-composer.php:626
+#: dhvc-woocommerce-page/includes/visual-composer.php:703
+#: dhvc-woocommerce-page/includes/visual-composer.php:761
+#: dhvc-woocommerce-page/includes/visual-composer.php:820
+#: dhvc-woocommerce-page/includes/visual-composer.php:910
+#: dhvc-woocommerce-page/includes/visual-composer.php:969
+#: dhvc-woocommerce-page/includes/visual-composer.php:1045
+msgid "Price"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/images/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:18
+msgid "WC Single Product Images"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/meta/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:151
+msgid "WC Single Product Meta"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/my_account/definition.php:8
+msgid "WC My Account"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/order_tracking/definition.php:8
+msgid "WC Order Tracking"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/price/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:69
+msgid "WC Single Product Price"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:1013
+msgid "Woo Product Attribute"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:36
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:36
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:36
+#: dhvc-woocommerce-page/includes/visual-composer.php:555
+#: dhvc-woocommerce-page/includes/visual-composer.php:633
+#: dhvc-woocommerce-page/includes/visual-composer.php:710
+#: dhvc-woocommerce-page/includes/visual-composer.php:768
+#: dhvc-woocommerce-page/includes/visual-composer.php:827
+#: dhvc-woocommerce-page/includes/visual-composer.php:917
+#: dhvc-woocommerce-page/includes/visual-composer.php:976
+#: dhvc-woocommerce-page/includes/visual-composer.php:1052
+msgid "Ascending or Descending"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:41
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:41
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:41
+#: dhvc-woocommerce-page/includes/visual-composer.php:559
+#: dhvc-woocommerce-page/includes/visual-composer.php:637
+#: dhvc-woocommerce-page/includes/visual-composer.php:715
+#: dhvc-woocommerce-page/includes/visual-composer.php:772
+#: dhvc-woocommerce-page/includes/visual-composer.php:831
+#: dhvc-woocommerce-page/includes/visual-composer.php:921
+#: dhvc-woocommerce-page/includes/visual-composer.php:980
+#: dhvc-woocommerce-page/includes/visual-composer.php:1056
+msgid "Ascending"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:41
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:41
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:41
+#: dhvc-woocommerce-page/includes/visual-composer.php:560
+#: dhvc-woocommerce-page/includes/visual-composer.php:638
+#: dhvc-woocommerce-page/includes/visual-composer.php:714
+#: dhvc-woocommerce-page/includes/visual-composer.php:773
+#: dhvc-woocommerce-page/includes/visual-composer.php:832
+#: dhvc-woocommerce-page/includes/visual-composer.php:922
+#: dhvc-woocommerce-page/includes/visual-composer.php:981
+#: dhvc-woocommerce-page/includes/visual-composer.php:1057
+msgid "Descending"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:42
+#: dhvc-woocommerce-page/includes/visual-composer.php:1063
+msgid "Attribute"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_attribute/definition.php:43
+#: dhvc-woocommerce-page/includes/visual-composer.php:1069
+msgid "Filter"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:588
+msgid "Woo Product Categories"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:51
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:54
+#: dhvc-woocommerce-page/includes/visual-composer.php:517
+#: dhvc-woocommerce-page/includes/visual-composer.php:598
+msgid "Categories"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:55
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:61
+#: dhvc-woocommerce-page/includes/visual-composer.php:566
+msgid "Query type"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:61
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:67
+#: dhvc-woocommerce-page/includes/visual-composer.php:571
+msgid "IN"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:62
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:68
+#: dhvc-woocommerce-page/includes/visual-composer.php:572
+msgid "AND"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:63
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:69
+#: dhvc-woocommerce-page/includes/visual-composer.php:573
+msgid "NOT IN"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:67
+#: dhvc-woocommerce-page/includes/visual-composer.php:645
+msgid "Hide Empty"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:72
+#: dhvc-woocommerce-page/includes/visual-composer.php:649
+msgid "Yes"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:72
+#: dhvc-woocommerce-page/includes/visual-composer.php:650
+msgid "No"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_categories/definition.php:73
+#: dhvc-woocommerce-page/includes/visual-composer.php:656
+msgid "Parent"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/product_category/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:508
+msgid "Woo Product Category"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:8
+msgid "WC Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/products/definition.php:15
+msgid "Add Products IDS"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/rating/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:52
+msgid "WC Single Product Rating"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/recent_products/definition.php:8
+msgid "WC Recent Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/related_products/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:266
+msgid "WC Single Product Related"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/reviews/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:202
+msgid "WC Single Product Reviews"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/sharing/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:168
+msgid "WC Single Product Sharing"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/shop_messages/definition.php:7
+msgid "WC Shop Messages"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/title/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:35
+msgid "WC Single Product Title"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/top_rated_products/definition.php:8
+msgid "WC Top Rated Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/upsell_products/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:219
+msgid "WC Single Product Upsell"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/cs-elements/wishlist/definition.php:8
+#: dhvc-woocommerce-page/includes/visual-composer.php:405
+msgid "WC Single Product Wishlist"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/functions.php:230
+msgid "(more&hellip;)"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/shortcode.php:218
+#, php-format
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/shortcode.php:348
+msgid "N/A"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:20
+#: dhvc-woocommerce-page/includes/visual-composer.php:37
+#: dhvc-woocommerce-page/includes/visual-composer.php:54
+#: dhvc-woocommerce-page/includes/visual-composer.php:71
+#: dhvc-woocommerce-page/includes/visual-composer.php:87
+#: dhvc-woocommerce-page/includes/visual-composer.php:104
+#: dhvc-woocommerce-page/includes/visual-composer.php:119
+#: dhvc-woocommerce-page/includes/visual-composer.php:136
+#: dhvc-woocommerce-page/includes/visual-composer.php:153
+#: dhvc-woocommerce-page/includes/visual-composer.php:170
+#: dhvc-woocommerce-page/includes/visual-composer.php:187
+#: dhvc-woocommerce-page/includes/visual-composer.php:204
+#: dhvc-woocommerce-page/includes/visual-composer.php:221
+#: dhvc-woocommerce-page/includes/visual-composer.php:268
+#: dhvc-woocommerce-page/includes/visual-composer.php:315
+#: dhvc-woocommerce-page/includes/visual-composer.php:378
+#: dhvc-woocommerce-page/includes/visual-composer.php:407
+#: dhvc-woocommerce-page/includes/visual-composer.php:425
+#: dhvc-woocommerce-page/includes/visual-composer.php:442
+#: dhvc-woocommerce-page/includes/visual-composer.php:459
+#: dhvc-woocommerce-page/includes/visual-composer.php:476
+#: dhvc-woocommerce-page/includes/visual-composer.php:493
+#: dhvc-woocommerce-page/includes/visual-composer.php:510
+#: dhvc-woocommerce-page/includes/visual-composer.php:590
+#: dhvc-woocommerce-page/includes/visual-composer.php:673
+#: dhvc-woocommerce-page/includes/visual-composer.php:732
+#: dhvc-woocommerce-page/includes/visual-composer.php:790
+#: dhvc-woocommerce-page/includes/visual-composer.php:849
+#: dhvc-woocommerce-page/includes/visual-composer.php:880
+#: dhvc-woocommerce-page/includes/visual-composer.php:939
+#: dhvc-woocommerce-page/includes/visual-composer.php:998
+#: dhvc-woocommerce-page/includes/visual-composer.php:1015
+msgid "WC Single Product"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:25
+#: dhvc-woocommerce-page/includes/visual-composer.php:43
+#: dhvc-woocommerce-page/includes/visual-composer.php:60
+#: dhvc-woocommerce-page/includes/visual-composer.php:77
+#: dhvc-woocommerce-page/includes/visual-composer.php:92
+#: dhvc-woocommerce-page/includes/visual-composer.php:110
+#: dhvc-woocommerce-page/includes/visual-composer.php:125
+#: dhvc-woocommerce-page/includes/visual-composer.php:141
+#: dhvc-woocommerce-page/includes/visual-composer.php:158
+#: dhvc-woocommerce-page/includes/visual-composer.php:175
+#: dhvc-woocommerce-page/includes/visual-composer.php:192
+#: dhvc-woocommerce-page/includes/visual-composer.php:209
+#: dhvc-woocommerce-page/includes/visual-composer.php:257
+#: dhvc-woocommerce-page/includes/visual-composer.php:305
+#: dhvc-woocommerce-page/includes/visual-composer.php:337
+#: dhvc-woocommerce-page/includes/visual-composer.php:392
+#: dhvc-woocommerce-page/includes/visual-composer.php:413
+#: dhvc-woocommerce-page/includes/visual-composer.php:431
+#: dhvc-woocommerce-page/includes/visual-composer.php:448
+#: dhvc-woocommerce-page/includes/visual-composer.php:465
+#: dhvc-woocommerce-page/includes/visual-composer.php:482
+#: dhvc-woocommerce-page/includes/visual-composer.php:498
+#: dhvc-woocommerce-page/includes/visual-composer.php:578
+#: dhvc-woocommerce-page/includes/visual-composer.php:662
+#: dhvc-woocommerce-page/includes/visual-composer.php:721
+#: dhvc-woocommerce-page/includes/visual-composer.php:779
+#: dhvc-woocommerce-page/includes/visual-composer.php:838
+#: dhvc-woocommerce-page/includes/visual-composer.php:869
+#: dhvc-woocommerce-page/includes/visual-composer.php:928
+#: dhvc-woocommerce-page/includes/visual-composer.php:987
+#: dhvc-woocommerce-page/includes/visual-composer.php:1004
+#: dhvc-woocommerce-page/includes/visual-composer.php:1075
+msgid "Extra class name"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:29
+#: dhvc-woocommerce-page/includes/visual-composer.php:46
+#: dhvc-woocommerce-page/includes/visual-composer.php:63
+#: dhvc-woocommerce-page/includes/visual-composer.php:80
+#: dhvc-woocommerce-page/includes/visual-composer.php:96
+#: dhvc-woocommerce-page/includes/visual-composer.php:112
+#: dhvc-woocommerce-page/includes/visual-composer.php:128
+#: dhvc-woocommerce-page/includes/visual-composer.php:145
+#: dhvc-woocommerce-page/includes/visual-composer.php:162
+#: dhvc-woocommerce-page/includes/visual-composer.php:179
+#: dhvc-woocommerce-page/includes/visual-composer.php:196
+#: dhvc-woocommerce-page/includes/visual-composer.php:213
+#: dhvc-woocommerce-page/includes/visual-composer.php:261
+#: dhvc-woocommerce-page/includes/visual-composer.php:308
+#: dhvc-woocommerce-page/includes/visual-composer.php:396
+#: dhvc-woocommerce-page/includes/visual-composer.php:416
+#: dhvc-woocommerce-page/includes/visual-composer.php:434
+#: dhvc-woocommerce-page/includes/visual-composer.php:451
+#: dhvc-woocommerce-page/includes/visual-composer.php:468
+#: dhvc-woocommerce-page/includes/visual-composer.php:485
+#: dhvc-woocommerce-page/includes/visual-composer.php:502
+#: dhvc-woocommerce-page/includes/visual-composer.php:582
+#: dhvc-woocommerce-page/includes/visual-composer.php:665
+#: dhvc-woocommerce-page/includes/visual-composer.php:724
+#: dhvc-woocommerce-page/includes/visual-composer.php:782
+#: dhvc-woocommerce-page/includes/visual-composer.php:841
+#: dhvc-woocommerce-page/includes/visual-composer.php:872
+#: dhvc-woocommerce-page/includes/visual-composer.php:931
+#: dhvc-woocommerce-page/includes/visual-composer.php:990
+#: dhvc-woocommerce-page/includes/visual-composer.php:1007
+#: dhvc-woocommerce-page/includes/visual-composer.php:1078
+msgid ""
+"If you wish to style particular content element differently, then use this "
+"field to add a class name and then refer to it in your css file."
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:317
+msgid "Custom fields data from meta values of the product."
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:340
+msgid ""
+"Style particular content element differently - add a class name and refer to "
+"it in custom CSS."
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:376
+msgid "WC ACF Custom Fields"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:379
+msgid "Advanced Custom Fields (ACF Plugin)."
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:423
+msgid "Woo Breadcrumb"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:440
+msgid "Woo Cart"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:457
+msgid "Woo Checkout"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:474
+msgid "Woo Order Tracking"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:491
+msgid "Woo My Account"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:604
+msgid "Number"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:671
+msgid "Woo Recent Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:730
+msgid "Woo Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:737
+msgid "Select products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:788
+msgid "Woo Sale Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:847
+msgid "Woo Best Selling Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:878
+msgid "Woo Top Rated Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:937
+msgid "Woo Featured Products"
+msgstr ""
+
+#: dhvc-woocommerce-page/includes/visual-composer.php:996
+msgid "Woo Shop Messages"
+msgstr ""
