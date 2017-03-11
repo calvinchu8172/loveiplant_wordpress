@@ -13,7 +13,8 @@
 			<div class="container">
 
 				<!-- Footer Info -->
-				<p id="footer-info"><?php printf( et_get_safe_localization( __( 'Designed by %1$s | Powered by %2$s', 'extra' ) ), '<a href="http://www.elegantthemes.com" title="Premium WordPress Themes">Elegant Themes</a>', '<a href="http://www.wordpress.org">WordPress</a>' ); ?></p>
+				<!-- <p id="footer-info"><?#php printf( et_get_safe_localization( __( 'Designed by %1$s | Powered by %2$s', 'extra' ) ), '<a href="http://www.elegantthemes.com" title="Premium WordPress Themes">Elegant Themes</a>', '<a href="http://www.wordpress.org">WordPress</a>' ); ?></p> -->
+				<p id="footer-info" style="font-weight: bold; color: white;">Copyright © Loveiplant. All rights reserved.</p>
 
 				<!-- Footer Navigation -->
 				<?php if ( has_nav_menu( 'footer-menu' ) || false !== et_get_option( 'show_footer_social_icons', true ) ) { ?>
