@@ -8759,3 +8759,19 @@ function et_get_footer_credits() {
 	return et_get_safe_localization( sprintf( $credits_format, $footer_credits, 'div' ) );
 }
 endif;
+
+add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 100 );
+function hide_shipping_when_free_is_available( $rates ) {
+	$free = array();
+
+
+	foreach ( $rates as $rate_id => $rate ) {
+		if ( 'free_shipping' === $rate->method_id ) {
+			$free[ $rate_id ] = $rate;
+			break;
+		}
+	}
+
+
+	return ! empty( $free ) ? $free : $rates;
+}
