@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Products Per Page 1.0.1\n"
+"POT-Creation-Date: 2014-03-15 14:13+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Michel Taumaturgo Rocha <mitarodigital@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: /Users/Jeroen/plugins/woocommerce-products-per-page/"
+"trunk\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language: pt_BR\n"
+"X-Poedit-SearchPath-0: /Users/Jeroen/plugins/woocommerce-products-per-page/"
+"trunk\n"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:27
+msgid "Dropdown location"
+msgstr "下拉選單位置"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:35
+msgid "List of dropdown options"
+msgstr "下拉選單選項"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:43
+msgid "Default products per page"
+msgstr "每頁顯示商品數預設值"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:51
+msgid "Shop columns"
+msgstr "一行有幾個商品"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:59
+msgid "First category page"
+msgstr "First category page"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:73
+msgid "WooCommerce Products Per Page"
+msgstr "WooCommerce Products Per Page"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:92
+msgid "Top"
+msgstr "Top"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:93
+msgid "Bottom"
+msgstr "Bottom"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:94
+msgid "Top/Bottom"
+msgstr "Top/Bottom"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:95
+msgid "None"
+msgstr "None"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:107
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "請用空格分開 <em>(設定 -1 表示顯示全部商品)</em>"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:118
+msgid "-1 for all products"
+msgstr "設定 -1 表示顯示全部商品"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:140
+msgid ""
+"When checked and a new number of PPP is selected, the visitor will be send "
+"to the first page of the product category"
+msgstr ""
+"When checked and a new number of PPP is selected, the visitor will be send "
+"to the first page of the product category"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:187
+msgid "Configure the WooCommerce Product Per Page settings here."
+msgstr "Configure the WooCommerce Product Per Page settings here."
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:49
+#, php-format
+msgid "%s products per page"
+msgstr "每頁顯示 %s 個商品"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:50
+msgid "All"
+msgstr "全部"
