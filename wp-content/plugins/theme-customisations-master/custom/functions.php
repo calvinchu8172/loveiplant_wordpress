@@ -33,6 +33,7 @@ function wc_register_form_password_repeat() {
     <label for="reg_password2"><?php _e( '確認密碼', 'woocommerce' ); ?> <span class="required">*</span></label>
     <input type="password" class="input-text" name="password2" id="reg_password2" value="<?php if ( ! empty( $_POST['password2'] ) ) echo esc_attr( $_POST['password2'] ); ?>" />
   </p>
+  <span class="required">提醒您：密碼至少需要 7 個字元，其中包含英文字母與數字，英文字母至少 1 個大寫，並盡量不要連續數字或連續字母喔。</span>
   <?php
 }
 ?>
