@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce - Social Login v1.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-07-01 14:55+0800\n"
+"PO-Revision-Date: 2017-07-01 15:45+0800\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1583,7 +1583,7 @@ msgstr ""
 # @ wooslg
 #: includes/templates/social-link-buttons/facebook_link.php:19
 msgid "Link your account to Facebook"
-msgstr ""
+msgstr "連結 Facebook 帳號"
 
 # @ wooslg
 #: includes/templates/social-link-buttons/foursquare_link.php:16
@@ -1595,7 +1595,7 @@ msgstr ""
 #: includes/templates/social-link-buttons/googleplus_link.php:16
 #: includes/templates/social-link-buttons/googleplus_link.php:17
 msgid "Link your account with Google+"
-msgstr ""
+msgstr "連結 Google+ 帳號"
 
 # @ wooslg
 #: includes/templates/social-link-buttons/instagram_link.php:16
