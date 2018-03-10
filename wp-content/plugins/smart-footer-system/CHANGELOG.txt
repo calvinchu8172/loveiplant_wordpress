@@ -1,0 +1,141 @@
+- 2.3:
+	New Feature: Added Background Video
+	New Feature: Added Video YouTube Start Time / End Time
+	New Feature: Max Width for Boxed Footers
+	Improve: Added Divi Custom Post Type for Divi Builder
+	BugFix: Buddypress issues
+	BugFix: Footer query for speed and WPML issue
+	BugFix: Reveal Footer links not clickable
+	BugFix: WooCommerce product category footer display issue
+	BugFix: Spread Footer on iPhone/Safari issue
+	BugFix: Accordion Footer issue
+	BugFix: SlideUP Footer mouse leave issue
+	BugFix: Background handle SlideUP Footer in Salient Theme
+	BugFix: Divi Visual Builder Frontend Editor
+	BugFix: Other minor fixes
+
+- 2.2.1:
+	Improve: 15px horizontal padding in no VC Footers
+	Improve: Banner Footer Fluidity
+	BugFix: Hide/Show on mouse scroll event frontend
+	BugFix: Other minor fixes
+
+- 2.2:
+	New Feature: Added image type in icon select
+	New Feature: Added "On Mouse Leave" option in Banner and SlideUP
+	New Feature: Added "Show/Hide On Mouse Scroll" option on Normal Sticky, Banner, Slide Up and Spread Mode
+	New Feature: Added "Force Close" option for Banner Mode
+	New Feature: Added Custom WP Hook in General SFS Settings
+	New Feature: Added Mobile Background Image Positioning
+	Improve: Added "Overlay Hover Color" option for Banner Mode
+	BugFix: Banner opacity overlay
+	BugFix: Other minor fixes
+
+- 2.1:
+	New Feature: Added Spread Footer Mode
+	New Feature: Compatibility with King Composer Page Builder
+	Improve: Export button in Single Footer Metabox
+	Improve: Alpha color into Color Picker
+	Improve: Added Duplicate functionality in Footer List and Single Footer edit page
+	Improve: Added "Copy To Close" functionality in Slide Up and Accordion Footer
+	Improve: Added Elegant Icons
+	BugFix: Timeout banner conflict desktop / mobile
+	BugFix: Autoshow auto hide open on bottom combinations
+	BugFix: Accordion display on Desktop/Tablet/Mobile
+	BugFix: Slide UP opened handle position on mobile version
+	BugFix: Rosa Theme issues
+	BugFix: Accordion content height and animation 
+	BugFix: Overlay color opacity into overlay content background
+	BugFix: Other minor fixes
+	
+- 2.0.1
+	Improve: Backend Language
+	BugFix: Backend switch don’t work on certain themes
+	BugFix: Backend external links
+	BugFix: ScrollTop AutoOpen in SlideUp
+	BugFix: Fix Jupiter Theme 100% body height
+
+- 2.0.0
+	New Feature: New Backend UI.
+	New Feature: SFS Settings, Import/Export option and Footers have been merged into one single panel.
+	New Feature: Restyling of Input, Select and Checkbox elements.
+	New Feature: Added two new footer types CSS3 Animations and Accordion.
+	New Feature: Added Background image Options and their properties to every footers.
+	New Feature: Added Border Options to the Footer content.
+	New Feature: Added Font properties to Slide Up, Banner, CSS3 Animations and Accordion footer types.
+	New Feature: Added Publicly Queryable switch in Smart Footer System/Settings for frontend builders compatibility.
+	New Feature: Added vertical and horizontal padding options for all Desktop, Tablet, and Mobile devices.
+	New Feature: Added Mobile, Tablet and Desktop Visibility Options.
+	New Feature: Added Import Demos option in SFS General Settings.
+	New Feature: Added .pot file, english and italian version.
+	Improve: Added Footer Content Padding options in pixels and percents.
+	Improve: Enfold Theme Compatibility.
+	Improve: Elementor Builder Compatibility.
+	Improve: Alpha slider to opacity.
+	Improve: Labels and text under every option with hint.
+	Improve: Changed files and folders hierarchy.
+	Improve: Added 2 new measures to the Padding Option.
+	Improve: The handle of the Slide Up Footer on mobile devices is now always centered horizontally.
+	Improve: Now the Sticky Mode of the version 1.2 is called Slide Up Mode.
+	Improve: Added the Sticky option to the Normal Footer.
+	Improve: Added Shadow option to the Normal Footer.
+	Improve: Added fixed padding in the footer content of the mobile.
+	Improve: The Hide On Mobile option has been moved from the Sticky control panel to the general footer content panel.
+	Improve: Import/export options has been moved to the general settings.
+	Improve: Added compatibility with Enfold theme.
+	Improve: Added overlay color to the background.
+	Improve: Added options panel for background content.
+	BugFix: max-height Slide Up.
+	BugFix: Fix vertical alignment Slide Up.
+	BugFix: Other minor fixes.
+
+- 1.2.2
+	Improve: Added Background Content color option to all footer types
+	Improve: Added vertical padding option on Full Width Sticky Footer
+	Improve: Added a class with the slug of Footer Name on footer wrapper.
+	BugFix: Circle Handle on Sticky Footer
+	BugFix: Banner Footer Type Timeout Auto Open / Auto Close
+	BugFix: Banner Footer Type Auto Open on the and of page
+	
+- 1.2.1
+	New Feature: Import/Export footers
+	New Feature: Added auto show/auto hide banner footer
+	New Feature: Added auto open on the scroll on bottom of the page
+	BugFix: Banner Footer background color
+	BugFix: Close icon dont display if Open icon is clear
+	BugFix: Smooth scroll on mobile devices
+	BugFix: Mobile position elements
+	BugFix: Other several bug fixes
+
+- 1.2
+	New Feature: Added Reveal footer type
+	New Feature: Added Banner footer type
+	New Feature: Auto open on scroll bottom of page in sticky footer
+	New Feature: Trasparency on handle on sticky footer
+	New Feature: Custom css on single footer
+	BugFix: Compatible with Upflit Theme
+	BugFix: Color picker issues with some themes
+	BugFix: Open sticky footer issues
+	BugFix: WooCommerce issues
+	BugFix: Other several bug fixes
+
+- 1.1.1
+	BugFix: Mobile scroll in footer content
+	BugFix: Handle in sticky footer go over top window
+	BugFix: Activation plugin for particular platform and php versions
+	BugFix: Other several bug fixes
+
+- 1.1
+	New Feature: Added WooCommerce section in SFS settings
+	New Feature: Custom Footer for every WooCommerce pages
+	New Feature: Single Page Product Custom Footer
+	New Feature: Archive pages Custom Footer
+	New Feature: Blog page Custom Footer
+	New Feature: Homepage Custom Footer	
+	New Feature: SFS Single Post Type Footer deactivation
+	New Feature: Handle Icon/Text aligment	
+	BugFix: Responsive and Mobile issues
+	BugFix: "Do you want to hide your footer theme?" issues
+
+- 1.0
+	Init Version
