@@ -18,23 +18,28 @@
  *
  * @package   WC-Memberships/Templates
  * @author    SkyVerge
- * @copyright Copyright (c) 2014-2015, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Membership note email
  *
+ * @type string $email_heading Email heading
+ * @type string $membership_note Membership note
+ * @type \WC_Memberships_User_Membership $user_membership User Membership
+ *
+ * @version 1.0.0
  * @since 1.0.0
  */
  ?>
 
 <?php do_action( 'woocommerce_email_header', $email_heading ); ?>
 
-<p><?php _e( "Hello, a note has just been added to your membership:", WC_Memberships::TEXT_DOMAIN ); ?></p>
+<p><?php esc_html_e( 'Hello, a note has just been added to your membership:', 'woocommerce-memberships' ); ?></p>
 
 <blockquote><?php echo wpautop( wptexturize( $membership_note ) ) ?></blockquote>
 
-<?php do_action( 'woocommerce_email_footer' ); ?>
+<?php do_action( 'woocommerce_email_footer' );

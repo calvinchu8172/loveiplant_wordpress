@@ -19,11 +19,11 @@
  * @package   WC-Memberships/Admin/Meta-Boxes
  * @author    SkyVerge
  * @category  Admin
- * @copyright Copyright (c) 2014-2015, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * User Membership Notes Meta Box
@@ -33,11 +33,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class WC_Memberships_Meta_Box_User_Membership_Notes extends WC_Memberships_Meta_Box {
 
 
-	/** @var string meta box id **/
-	protected $id = 'wc-memberships-user-membership-notes';
+	/**
+	 * Constructor
+	 *
+	 * @since 1.7.0
+	 */
+	public function __construct() {
 
-	/** @var array list of supported screen IDs **/
-	protected $screens = array( 'wc_user_membership' );
+		$this->id      = 'wc-memberships-user-membership-notes';
+		$this->screens = array( 'wc_user_membership' );
+
+		parent::__construct();
+	}
 
 
 	/**
@@ -47,20 +54,22 @@ class WC_Memberships_Meta_Box_User_Membership_Notes extends WC_Memberships_Meta_
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Membership Notes', WC_Memberships::TEXT_DOMAIN );
+		return __( 'Membership Notes', 'woocommerce-memberships' );
 	}
 
 
 	/**
 	 * Add meta box to the supported screen(s)
 	 *
+	 * @internal
+	 *
 	 * @since 1.0.0
 	 */
 	public function add_meta_box() {
 		global $pagenow;
 
-		// Do not display on new membership screen
-		if ( 'post-new.php' == $pagenow ) {
+		// do not display on new membership screen
+		if ( 'post-new.php' === $pagenow ) {
 			return;
 		}
 
@@ -71,20 +80,20 @@ class WC_Memberships_Meta_Box_User_Membership_Notes extends WC_Memberships_Meta_
 	/**
 	 * Display the membership notes meta box
 	 *
-	 * @param WP_Post $post
+	 * @param \WP_Post $post
 	 * @since 1.0.0
 	 */
 	public function output( WP_Post $post ) {
-		global $pagenow;
 
-		// Prepare variables
-		$user_membership = wc_memberships_get_user_membership( $post->ID );
-		$user_id         = 'post.php' == $pagenow
-								? $user_membership->get_user_id()
-								: ( isset( $_GET['user'] ) ? $_GET['user'] : null );
+		// prepare variables
+		$this->post            = $post;
+		$this->user_membership = $user_membership = wc_memberships_get_user_membership( $post->ID );
+		$this->order           = $order           = $user_membership->get_order();
+		$this->product         = $product         = $user_membership->get_product();
+		$this->user            = $user            = $this->get_membership_user( $user_membership );
 
-		// Bail out if no user ID
-		if ( ! $user_id ) {
+		// bail out if no user id
+		if ( ! $user ) {
 			return;
 		}
 
@@ -94,50 +103,79 @@ class WC_Memberships_Meta_Box_User_Membership_Notes extends WC_Memberships_Meta_
 		 * Fires at the beginning of the user membership notes meta box
 		 *
 		 * @since 1.0.0
-		 * @param WC_Memberships_User_Membership $user_membership The user membership
+		 * @param \WC_Memberships_User_Membership $user_membership The user membership
 		 */
 		do_action( 'wc_memberships_before_user_membership_notes', $user_membership );
 
 		?>
 		<div class="wc-user-membership-add-note">
-			<h4><?php esc_html_e( 'Add note', 'woocommerce' ); ?> <img class="help_tip" data-tip="<?php esc_attr_e( 'Add a note for your reference, or add a customer note (the user will be notified).', WC_Memberships::TEXT_DOMAIN ); ?>" src="<?php echo esc_url( WC()->plugin_url() ); ?>/assets/images/help.png" height="16" width="16" /></h4>
+
+			<h4><?php esc_html_e( 'Add note', 'woocommerce' ); ?>
+				<?php echo SV_WC_Plugin_Compatibility::wc_help_tip( __( 'Add a note for your reference, or add a customer note (the user will be notified).', 'woocommerce-memberships' ) ); ?></h4>
+
 			<p>
-				<textarea name="user_membership_note" id="user-membership-note" class="input-text" cols="100" rows="5"></textarea>
+				<textarea
+					name="user_membership_note"
+					id="user-membership-note"
+					class="input-text"
+					cols="100" rows="5"></textarea>
 			</p>
+
 			<p class="note-controls">
 				<label>
-					<input type="checkbox" name="notify_member" id="note-notify" class="notify-member" value="1" />
-					<?php esc_html_e( 'Notify Member', WC_Memberships::TEXT_DOMAIN ); ?>
+					<input
+						type="checkbox"
+						name="notify_member"
+						id="note-notify"
+						class="notify-member"
+						value="1"
+					/><?php esc_html_e( 'Notify Member', 'woocommerce-memberships' ); ?>
 				</label>
-				<a href="#" class="add-note js-add-note button"><?php esc_html_e( 'Add Note', WC_Memberships::TEXT_DOMAIN ); ?></a>
+				<a href="#" class="add-note js-add-note button"><?php esc_html_e( 'Add Note', 'woocommerce-memberships' ); ?></a>
 			</p>
+
 		</div>
+
+		<ul class="wc-user-membership-notes">
+			<?php
+
+			if ( $notes ) :
+
+				// load membership note view
+				require( wc_memberships()->get_plugin_path() . '/includes/admin/meta-boxes/views/class-wc-memberships-meta-box-view-membership-note.php' );
+
+				foreach ( $notes as $note ) :
+
+					$note_classes = get_comment_meta( $note->comment_ID, 'notified', true ) ? array( 'notified', 'note' ) : array( 'note' );
+
+					// output membership notes views
+					$view = new WC_Memberships_Meta_Box_View_Membership_Note( $this );
+					$view->output( array(
+						'note'         => $note,
+						'note_classes' => $note_classes,
+					) );
+
+				endforeach;
+
+			else :
+
+				?><li><?php esc_html_e( 'There are no notes yet.', 'woocommerce-memberships' ); ?></li><?php
+
+			endif;
+
+			?>
+		</ul>
+
 		<?php
-
-		echo '<ul class="wc-user-membership-notes">';
-
-		if ( $notes ) {
-
-			foreach ( $notes as $note ) {
-
-				$note_classes = get_comment_meta( $note->comment_ID, 'notified', true ) ? array( 'notified', 'note' ) : array( 'note' );
-
-				include('views/html-membership-note.php');
-			}
-
-		} else {
-			echo '<li>' . esc_html__( 'There are no notes yet.', WC_Memberships::TEXT_DOMAIN ) . '</li>';
-		}
-
-		echo '</ul>';
 
 		/**
 		 * Fires at the end of the user membership notes meta box
 		 *
 		 * @since 1.0.0
-		 * @param WC_Memberships_User_Membership $user_membership The user membership
+		 * @param \WC_Memberships_User_Membership $user_membership The user membership
 		 */
 		do_action( 'wc_memberships_after_user_membership_notes', $user_membership );
 	}
+
 
 }
