@@ -19,11 +19,11 @@
  * @package   WC-Memberships/Admin
  * @author    SkyVerge
  * @category  Admin
- * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2015, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! class_exists( 'WC_Settings_Memberships' ) ) :
 
@@ -38,16 +38,19 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 	/**
 	 * Setup settings class
 	 *
-	 * @since 1.0.0
+	 * @since  1.0
 	 */
 	public function __construct() {
 
 		$this->id    = 'memberships';
-		$this->label = __( 'Memberships', 'woocommerce-memberships' );
+		$this->label = __( 'Memberships', WC_Memberships::TEXT_DOMAIN );
 
-		parent::__construct();
+		add_filter( 'woocommerce_settings_tabs_array',        array( $this, 'add_settings_page' ), 20 );
+		add_action( 'woocommerce_settings_' . $this->id,      array( $this, 'output' ) );
+		add_action( 'woocommerce_settings_save_' . $this->id, array( $this, 'save' ) );
+		add_action( 'woocommerce_sections_' . $this->id,      array( $this, 'output_sections' ) );
 
-		// set the endpoint slug for Members Area in My Account
+		// Set the endpoint slug for Members Area in My Account
 		add_filter( 'woocommerce_account_settings', array( $this, 'add_my_account_endpoints_options' ) );
 	}
 
@@ -55,14 +58,13 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 	/**
 	 * Get sections
 	 *
-	 * @since 1.0.0
 	 * @return array
 	 */
 	public function get_sections() {
 
 		$sections = array(
-			''         => __( 'General', 'woocommerce-memberships' ),
-			'products' => __( 'Products', 'woocommerce-memberships' )
+			''         => __( 'General', WC_Memberships::TEXT_DOMAIN ),
+			'products' => __( 'Products', WC_Memberships::TEXT_DOMAIN )
 		);
 
 		return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
@@ -78,7 +80,7 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 	 */
 	public function get_settings( $current_section = '' ) {
 
-		if ( 'products' === $current_section ) {
+		if ( 'products' == $current_section ) {
 
 			/**
 			 * Filter Memberships products Settings
@@ -89,7 +91,7 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 			$settings = apply_filters( 'wc_memberships_products_settings', array(
 
 				array(
-					'name' => __( 'Products', 'woocommerce-memberships' ),
+					'name' => __( 'Products', WC_Memberships::TEXT_DOMAIN ),
 					'type' => 'title',
 					'desc' => '',
 					'id'   => 'memberships_products_options',
@@ -98,24 +100,16 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 				array(
 					'type'     => 'checkbox',
 					'id'       => 'wc_memberships_allow_cumulative_access_granting_orders',
-					'name'     => __( 'Allow cumulative purchases', 'woocommerce-memberships' ),
-					'desc'     => __( 'Purchasing products that grant access to a membership in the same order extends the length of the membership.', 'woocommerce-memberships' ),
-					'default'  => 'no',
-				),
-
-				array(
-					'type'     => 'checkbox',
-					'id'       => 'wc_memberships_exclude_on_sale_products_from_member_discounts',
-					'name'     => __( 'Exclude products on sale from member discounts', 'woocommerce-memberships' ),
-					'desc'     => __( 'Do not apply member discounts from any membership plan discount rules to products that are currently on sale.', 'woocommerce-memberships' ),
+					'name'     => __( 'Allow cumulative purchases', WC_Memberships::TEXT_DOMAIN ),
+					'desc'     => __( 'Purchasing products that grant access to a membership in the same order extends the length of the membership.', WC_Memberships::TEXT_DOMAIN ),
 					'default'  => 'no',
 				),
 
 				array(
 					'type'     => 'checkbox',
 					'id'       => 'wc_memberships_hide_restricted_products',
-					'name'     => __( 'Hide restricted products', 'woocommerce-memberships' ),
-					'desc'     => __( 'If enabled, products with viewing restricted will be hidden from the shop catalog. Products will still be accessible directly, unless Content Restriction Mode is "Hide completely".', 'woocommerce-memberships' ),
+					'name'     => __( 'Hide restricted products', WC_Memberships::TEXT_DOMAIN ),
+					'desc'     => __( 'If enabled, products with viewing restricted will be hidden from the shop catalog. Products will still be accessible directly, unless Content Restriction Mode is "Hide completely".', WC_Memberships::TEXT_DOMAIN ),
 					'default'  => 'no',
 				),
 
@@ -125,13 +119,9 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 				),
 
 				array(
-					'name' => __( 'Product Restriction Messages', 'woocommerce-memberships' ),
+					'name' => __( 'Product Restriction Messages', WC_Memberships::TEXT_DOMAIN ),
 					'type' => 'title',
-					/* translators: Placeholders: %1$s is {products} merge tag and %2$s is {login_url} merge tag */
-					'desc' =>  sprintf( __( '%1$s automatically inserts the product(s) needed to gain access. %2$s inserts the URL to my account page with the login form. HTML is allowed.', 'woocommerce-memberships' ),
-						'<strong><code>{products}</code></strong>',
-						'<strong><code>{login_url}</code></strong>'
-					),
+					'desc' =>  sprintf( __( '%s automatically inserts the product(s) needed to gain access. %s inserts the URL to my account page with the login form. HTML is allowed.', WC_Memberships::TEXT_DOMAIN ), '<code>{products}</code>', '<code>{login_url}</code>' ),
 					'id'   => 'memberships_product_messages',
 				),
 
@@ -139,75 +129,63 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_product_viewing_restricted_message',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Product Viewing Restricted - Purchase Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Displays when purchase is required to view the product.', 'woocommerce-memberships' ),
-					/* translators: Placeholders: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
-					'default'       => sprintf( __( 'This product can only be viewed by members. To view or purchase this product, sign up by purchasing %1$s, or %2$slog in%3$s if you are a member.', 'woocommerce-memberships' ),
-						'{products}',
-						'<a href="{login_url}">',
-						'</a>'
-					),
-					'desc_tip'      => __( 'Message displayed if viewing is restricted to members but access can be purchased.', 'woocommerce-memberships' ),
+					'name'          => __( 'Product Viewing Restricted - Purchase Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Displays when purchase is required to view the product.', WC_Memberships::TEXT_DOMAIN ),
+					/* translators: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
+					'default'       => sprintf( __( 'This product can only be viewed by members. To view or purchase this product, sign up by purchasing %1$s, or %2$slog in%3$s if you are a member.', WC_Memberships::TEXT_DOMAIN ), '{products}', '<a href="{login_url}">', '</a>' ),
+					'desc_tip'      => __( 'Message displayed if viewing is restricted to members but access can be purchased.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_product_viewing_restricted_message_no_products',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Product Viewing Restricted - Membership Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Displays if viewing is restricted to a membership that cannot be purchased.', 'woocommerce-memberships' ),
-					'default'       => __( 'This product can only be viewed by members.', 'woocommerce-memberships' ),
-					'desc_tip'      => __( 'Message displayed if viewing is restricted to members and no products can grant access.', 'woocommerce-memberships' ),
+					'name'          => __( 'Product Viewing Restricted - Membership Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Displays if viewing is restricted to a membership that cannot be purchased.', WC_Memberships::TEXT_DOMAIN ),
+					'default'       => __( 'This product can only be viewed by members.', WC_Memberships::TEXT_DOMAIN ),
+					'desc_tip'      => __( 'Message displayed if viewing is restricted to members and no products can grant access.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_product_purchasing_restricted_message',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Product Buying Restricted - Purchase Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Displays when purchase is required to buy the product.', 'woocommerce-memberships' ),
-					/* translators: Placeholders: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
-					'default'       => sprintf( __( 'This product can only be purchased by members. To purchase this product, sign up by purchasing %1$s, or %2$slog in%3$s if you are a member.', 'woocommerce-memberships' ),
-						'{products}',
-						'<a href="{login_url}">',
-						'</a>'
-					),
-					'desc_tip'      => __( 'Message displayed if purchasing is restricted to members but access can be purchased.', 'woocommerce-memberships' ),
+					'name'          => __( 'Product Buying Restricted - Purchase Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Displays when purchase is required to buy the product.', WC_Memberships::TEXT_DOMAIN ),
+					/* translators: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
+					'default'       => sprintf( __( 'This product can only be purchased by members. To purchase this product, sign up by purchasing %1$s, or %2$slog in%3$s if you are a member.', WC_Memberships::TEXT_DOMAIN ), '{products}', '<a href="{login_url}">', '</a>' ),
+					'desc_tip'      => __( 'Message displayed if purchasing is restricted to members but access can be purchased.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_product_purchasing_restricted_message_no_products',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Product Buying Restricted - Membership Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Displays if purchasing is restricted to a membership that cannot be purchased.', 'woocommerce-memberships' ),
-					'default'       => __( 'This product can only be purchased by members.', 'woocommerce-memberships' ),
-					'desc_tip'      => __( 'Message displayed if purchasing is restricted to members and no products can grant access.', 'woocommerce-memberships' ),
+					'name'          => __( 'Product Buying Restricted - Membership Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Displays if purchasing is restricted to a membership that cannot be purchased.', WC_Memberships::TEXT_DOMAIN ),
+					'default'       => __( 'This product can only be purchased by members.', WC_Memberships::TEXT_DOMAIN ),
+					'desc_tip'      => __( 'Message displayed if purchasing is restricted to members and no products can grant access.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_product_discount_message',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Product Discounted - Purchase Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Message displayed to non-members if the product has a member discount.', 'woocommerce-memberships' ),
-					/* translators: Placeholders: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
-					'default'       => sprintf( __( 'Want a discount? Become a member by purchasing %1$s, or %2$slog in%3$s if you are a member.', 'woocommerce-memberships' ),
-						'{products}',
-						'<a href="{login_url}">',
-						'</a>'
-					),
-					'desc_tip'      => __( 'Displays below add to cart buttons. Leave blank to disable.', 'woocommerce-memberships' ),
+					'name'          => __( 'Product Discounted - Purchase Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Message displayed to non-members if the product has a member discount.', WC_Memberships::TEXT_DOMAIN ),
+					/* translators: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
+					'default'       => sprintf( __( 'Want a discount? Become a member by purchasing purchasing %1$s, or %2$slog in%3$s if you are a member.', WC_Memberships::TEXT_DOMAIN ), '{products}', '<a href="{login_url}">', '</a>' ),
+					'desc_tip'      => __( 'Displays below add to cart buttons. Leave blank to disable.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_product_discount_message_no_products',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Product Discounted - Membership Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Message displayed to non-members if the product has a member discount, but no products can grant access.', 'woocommerce-memberships' ),
-					'default'       => __( 'Want a discount? Become a member.', 'woocommerce-memberships' ),
-					'desc_tip'      => __( 'Displays below add to cart buttons. Leave blank to disable.', 'woocommerce-memberships' ),
+					'name'          => __( 'Product Discounted - Membership Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Message displayed to non-members if the product has a member discount, but no products can grant access.', WC_Memberships::TEXT_DOMAIN ),
+					'default'       => __( 'Want a discount? Become a member.', WC_Memberships::TEXT_DOMAIN ),
+					'desc_tip'      => __( 'Displays below add to cart buttons. Leave blank to disable.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
@@ -217,7 +195,9 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 
 			) );
 
-		} else {
+		}
+
+		else {
 
 			/**
 			 * Filter Memberships general Settings
@@ -228,7 +208,7 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 			$settings = apply_filters( 'wc_memberships_general_settings', array(
 
 				array(
-					'name' => __( 'General', 'woocommerce-memberships' ),
+					'name' => __( 'General', WC_Memberships::TEXT_DOMAIN ),
 					'type' => 'title',
 					'desc' => '',
 					'id'   => 'memberships_options',
@@ -237,24 +217,24 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 				array(
 					'type'     => 'select',
 					'id'       => 'wc_memberships_restriction_mode',
-					'name'     => __( 'Content Restriction Mode', 'woocommerce-memberships' ),
+					'name'     => __( 'Content Restriction Mode', WC_Memberships::TEXT_DOMAIN ),
 					'options'  => array(
-						'hide'         => __( 'Hide completely', 'woocommerce-memberships' ),
-						'hide_content' => __( 'Hide content only', 'woocommerce-memberships' ),
-						'redirect'     => __( 'Redirect to page', 'woocommerce-memberships' ),
+						'hide'         => __( 'Hide completely', WC_Memberships::TEXT_DOMAIN ),
+						'hide_content' => __( 'Hide content only', WC_Memberships::TEXT_DOMAIN ),
+						'redirect'     => __( 'Redirect to page', WC_Memberships::TEXT_DOMAIN ),
 					),
-					'class'    => 'wc-enhanced-select',
-					'desc_tip' => __( 'Specifies the way content is restricted: whether to show nothing, excerpts, or send to a landing page.', 'woocommerce-memberships' ),
-					'desc'     => __( '"Hide completely" removes all traces of content for non-members and search engines and 404s restricted pages.<br />"Hide content only" will show items in archives, but protect page or post content and comments.', 'woocommerce-memberships' ),
+					'class'    => SV_WC_Plugin_Compatibility::is_wc_version_gte_2_3() ? 'wc-enhanced-select' : 'wc-memberships-chosen_select',
+					'desc_tip' => __( 'Specifies the way content is restricted: whether to show nothing, excerpts, or send to a landing page.', WC_Memberships::TEXT_DOMAIN ),
+					'desc'     => __( '"Hide completely" removes all traces of content for non-members and search engines and 404s restricted pages.<br />"Hide content only" will show items in archives, but protect page or post content and comments.', WC_Memberships::TEXT_DOMAIN ),
 					'default'  => 'hide_content',
 				),
 
 				array(
-					'title'    => __( 'Redirect Page', 'woocommerce-memberships' ),
-					'desc'     => __( 'Select the page to redirect non-members to - should contain the [wcm_content_restricted] shortcode.', 'woocommerce-memberships' ),
+					'title'    => __( 'Redirect Page', WC_Memberships::TEXT_DOMAIN ),
+					'desc'     => __( 'Select the page to redirect non-members to - should contain the [wcm_content_restricted] shortcode.', WC_Memberships::TEXT_DOMAIN ),
 					'id'       => 'wc_memberships_redirect_page_id',
 					'type'     => 'single_select_page',
-					'class'    => 'wc-enhanced-select-nostd js-redirect-page',
+					'class'    => SV_WC_Plugin_Compatibility::is_wc_version_gte_2_3() ? 'wc-enhanced-select-nostd js-redirect-page' : 'wc-memberships-chosen_select_nostd js-redirect-page',
 					'css'      => 'min-width:300px;',
 					'desc_tip' => true,
 				),
@@ -262,23 +242,23 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 				array(
 					'type'     => 'checkbox',
 					'id'       => 'wc_memberships_show_excerpts',
-					'name'     => __( 'Show Excerpts', 'woocommerce-memberships' ),
-					'desc'     => __( 'If enabled, an excerpt of the protected content will be displayed to non-members & search engines.', 'woocommerce-memberships' ),
+					'name'     => __( 'Show Excerpts', WC_Memberships::TEXT_DOMAIN ),
+					'desc'     => __( 'If enabled, an excerpt of the protected content will be displayed to non-members & search engines.', WC_Memberships::TEXT_DOMAIN ),
 					'default'  => 'yes',
 				),
 
 				array(
 					'type'     => 'select',
 					'id'       => 'wc_memberships_display_member_login_notice',
-					'name'     => __( 'Show Member Login Notice', 'woocommerce-memberships' ),
+					'name'     => __( 'Show Member Login Notice', WC_Memberships::TEXT_DOMAIN ),
 					'options'  => array(
-						'never'    => __( 'Never', 'woocommerce-memberships' ),
-						'cart'     => __( 'On Cart Page', 'woocommerce-memberships' ),
-						'checkout' => __( 'On Checkout Page', 'woocommerce-memberships' ),
-						'both'     => __( 'On both Cart & Checkout Page', 'woocommerce-memberships' ),
+						'never'    => __( 'Never', WC_Memberships::TEXT_DOMAIN ),
+						'cart'     => __( 'On Cart Page', WC_Memberships::TEXT_DOMAIN ),
+						'checkout' => __( 'On Checkout Page', WC_Memberships::TEXT_DOMAIN ),
+						'both'     => __( 'On both Cart & Checkout Page', WC_Memberships::TEXT_DOMAIN ),
 					),
-					'class'    => 'wc-enhanced-select',
-					'desc_tip' => __( 'Select when & where to display login reminder notice for guests if products in cart have member discounts.', 'woocommerce-memberships' ),
+					'class'    => SV_WC_Plugin_Compatibility::is_wc_version_gte_2_3() ? 'wc-enhanced-select' : 'wc-memberships-chosen_select',
+					'desc_tip' => __( 'Select when & where to display login reminder notice for guests if products in cart have member discounts.', WC_Memberships::TEXT_DOMAIN ),
 					'default'  => 'both',
 				),
 
@@ -286,12 +266,11 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 					'type'     => 'textarea',
 					'id'       => 'wc_memberships_member_login_message',
 					'class'    => 'input-text wide-input',
-					'name'     => __( 'Member Login Message', 'woocommerce-memberships' ),
-					/* translators: Placeholder: %s - {login_url} merge tag */
-					'desc'     => sprintf( __( '%s inserts the URL to the My Account page with the login form. HTML is allowed.', 'woocommerce-memberships' ),
-						'<strong><code>{login_url}</code></strong>'
+					'name'     => __( 'Member Login Message', WC_Memberships::TEXT_DOMAIN ),
+					'desc'     => sprintf( __( '%s inserts the URL to the My Account page with the login form. HTML is allowed.', WC_Memberships::TEXT_DOMAIN ),
+						'<code>{login_url}</code>'
 					),
-					'desc_tip' => __( 'Message to remind members to log in to claim a discount. Leave blank to use the default log in message.', 'woocommerce-memberships' ),
+					'desc_tip' => __( 'Message to remind members to log in to claim a discount. Leave blank to use the default log in message.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
@@ -300,13 +279,9 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 				),
 
 				array(
-					'title'         => __( 'Content Restricted Messages', 'woocommerce-memberships' ),
+					'title'         => __( 'Content Restricted Messages', WC_Memberships::TEXT_DOMAIN ),
 					'type'          => 'title',
-					/* translators: Placeholders: %1$s is the {products} merge tag, $2$s is the {login_url} merge tag */
-					'desc'          =>  sprintf( __( '%1$s automatically inserts the product(s) needed to gain access. %2$s inserts the URL to my account page with the login form. HTML is allowed.', 'woocommerce-memberships' ),
-						'<strong><code>{products}</code></strong>',
-						'<strong><code>{login_url}</code></strong>'
-					),
+					'desc'          =>  sprintf( __( '%s automatically inserts the product(s) needed to gain access. %s inserts the URL to my account page with the login form. HTML is allowed.', WC_Memberships::TEXT_DOMAIN ), '<code>{products}</code>', '<code>{login_url}</code>' ),
 					'id'            => 'memberships_restriction_messages'
 				),
 
@@ -314,25 +289,21 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_content_restricted_message',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Content Restricted - Purchase Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Displays when purchase is required to view the content.', 'woocommerce-memberships' ),
-					/* translators: Placeholders: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
-					'default'       => sprintf( __( 'To access this content, you must purchase %1$s, or %2$slog in%3$s if you are a member.', 'woocommerce-memberships' ),
-						'{products}',
-						'<a href="{login_url}">',
-						'</a>'
-					),
-					'desc_tip'      => __( 'Message displayed if visitor does not have access to content, but can purchase it.', 'woocommerce-memberships' ),
+					'name'          => __( 'Content Restricted - Purchase Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Displays when purchase is required to view the content.', WC_Memberships::TEXT_DOMAIN ),
+					/* translators: %1$s is {products} merge tag, %2$s and %3$s are <a> tags for log in URL */
+					'default'       => sprintf( __( 'To access this content, you must purchase %1$s, or %2$slog in%3$s if you are a member.', WC_Memberships::TEXT_DOMAIN ), '{products}', '<a href="{login_url}">', '</a>' ),
+					'desc_tip'      => __( 'Message displayed if visitor does not have access to content, but can purchase it.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
 					'type'          => 'textarea',
 					'id'            => 'wc_memberships_content_restricted_message_no_products',
 					'class'         => 'input-text wide-input',
-					'name'          => __( 'Content Restricted - Membership Required', 'woocommerce-memberships' ),
-					'desc'          => __( 'Displays if the content is restricted to a membership that cannot be purchased.', 'woocommerce-memberships' ),
-					'default'       => __( 'This content is only available to members.', 'woocommerce-memberships' ),
-					'desc_tip'      => __( 'Message displayed if visitor does not have access to content and no products can grant access.', 'woocommerce-memberships' ),
+					'name'          => __( 'Content Restricted - Membership Required', WC_Memberships::TEXT_DOMAIN ),
+					'desc'          => __( 'Displays if the content is restricted to a membership that cannot be purchased.', WC_Memberships::TEXT_DOMAIN ),
+					'default'       => __( 'This content is only available to members.', WC_Memberships::TEXT_DOMAIN ),
+					'desc_tip'      => __( 'Message displayed if visitor does not have access to content and no products can grant access.', WC_Memberships::TEXT_DOMAIN ),
 				),
 
 				array(
@@ -356,7 +327,7 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 	/**
 	 * Output the settings
 	 *
-	 * @since 1.0.0
+	 * @since 1.0
 	 */
 	public function output() {
 		global $current_section;
@@ -368,8 +339,6 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 
 	/**
 	 * Save settings
-	 *
-	 * @since 1.0.0
 	 */
 	public function save() {
 		global $current_section;
@@ -383,8 +352,6 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 	 * Add custom slugs for endpoints in My Account page
 	 *
 	 * Filter callback for woocommerce_account_settings
-	 *
-	 * @internal
 	 *
 	 * @since 1.4.0
 	 * @param array $settings
@@ -401,8 +368,8 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 			if ( isset( $setting['id'] ) && 'woocommerce_logout_endpoint' === $setting['id'] ) {
 
 				$new_settings[] = array(
-						'title'    => __( 'My Membership', 'woocommerce-memberships' ),
-						'desc'     => __( 'Endpoint for the My Account &rarr; My Membership', 'woocommerce-memberships' ),
+						'title'    => __( 'My Membership', WC_Memberships::TEXT_DOMAIN ),
+						'desc'     => __( 'Endpoint for the My Account &rarr; My Membership', WC_Memberships::TEXT_DOMAIN ),
 						'id'       => 'woocommerce_myaccount_members_area_endpoint',
 						'type'     => 'text',
 						'default'  => 'members-area',
@@ -418,3 +385,5 @@ class WC_Settings_Memberships extends WC_Settings_Page {
 }
 
 endif;
+
+return new WC_Settings_Memberships();

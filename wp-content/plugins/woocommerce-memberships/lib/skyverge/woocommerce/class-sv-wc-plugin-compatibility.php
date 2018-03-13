@@ -18,11 +18,11 @@
  *
  * @package   SkyVerge/WooCommerce/Plugin/Classes
  * @author    SkyVerge
- * @copyright Copyright (c) 2013-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2013-2015, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! class_exists( 'SV_WC_Plugin_Compatibility' ) ) :
 
@@ -38,7 +38,7 @@ if ( ! class_exists( 'SV_WC_Plugin_Compatibility' ) ) :
  * are dropped.
  *
  * Current Compatibility
- * + Core 2.4.13 - 2.6.x
+ * + Core 2.2.x - 2.4.x
  * + Subscriptions 1.5.x - 2.0.x
  *
  * @since 2.0.0
@@ -47,67 +47,65 @@ class SV_WC_Plugin_Compatibility {
 
 
 	/**
-	 * Backports wc_checkout_is_https() to 2.4.x
+	 * Get the page permalink
 	 *
-	 * @since  4.3.0-beta
-	 * @return bool
+	 * Backports wc_page_page_permalink to WC 2.3.3 and lower
+	 *
+	 * @link https://github.com/woothemes/woocommerce/pull/7438
+	 *
+	 * @since 4.0.0
+	 * @param string $page page - myaccount, edit_address, shop, cart, checkout, pay, view_order, terms
+	 * @return string
 	 */
-	public static function wc_checkout_is_https() {
+	public static function wc_get_page_permalink( $page ) {
 
-		if ( self::is_wc_version_gte_2_5() ) {
+		if ( self::is_wc_version_gt( '2.3.3' ) ) {
 
-			return wc_checkout_is_https();
+			return wc_get_page_permalink( $page );
 
 		} else {
 
-			return wc_site_is_https() || 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) || class_exists( 'WordPressHTTPS' ) || strstr( wc_get_page_permalink( 'checkout' ), 'https:' );
+			$permalink = get_permalink( wc_get_page_id( $page ) );
+
+			return apply_filters( 'woocommerce_get_' . $page . '_page_permalink', $permalink );
 		}
 	}
 
 
 	/**
-	 * Backports WC_Product::get_id() method to 2.4.x
+	 * Get the raw (unescaped) cancel-order URL
 	 *
-	 * @link https://github.com/woothemes/woocommerce/pull/9765
+	 * Backports WC_Order::get_cancel_order_url_raw() to WC 2.3.5 and lower
 	 *
-	 * @since 4.2.0
-	 * @param \WC_Product $product product object
-	 * @return string|int product ID
+	 * @since 3.1.1
+	 * @param \WC_Order $order
+	 * @return string The unescaped cancel-order URL
 	 */
-	public static function product_get_id( WC_Product $product ) {
+	public static function get_cancel_order_url_raw( WC_Order $order, $redirect = '' ) {
 
-		if ( self::is_wc_version_gte_2_5() ) {
+		if ( self::is_wc_version_gt( '2.3.5' ) ) {
 
-			return $product->get_id();
+			return $order->get_cancel_order_url_raw( $redirect );
 
 		} else {
 
-			return $product->is_type( 'variation' ) ? $product->variation_id : $product->id;
-		}
-	}
+			// Get cancel endpoint
+			$cancel_endpoint = self::wc_get_page_permalink( 'cart' );
+			if ( ! $cancel_endpoint ) {
+				$cancel_endpoint = home_url();
+			}
 
+			if ( false === strpos( $cancel_endpoint, '?' ) ) {
+				$cancel_endpoint = trailingslashit( $cancel_endpoint );
+			}
 
-	/**
-	 * Backports wc_help_tip() to WC 2.4.x
-	 *
-	 * @link https://github.com/woothemes/woocommerce/pull/9417
-	 *
-	 * @since 4.2.0
-	 * @param string $tip help tip content, HTML allowed if $has_html is true
-	 * @param bool $has_html false by default, true to indicate tip content has HTML
-	 * @return string help tip HTML, a <span> in WC 2.5, <img> in WC 2.4
-	 */
-	public static function wc_help_tip( $tip, $has_html = false ) {
-
-		if ( self::is_wc_version_gte_2_5() ) {
-
-			return wc_help_tip( $tip, $has_html );
-
-		} else {
-
-			$tip = $has_html ? wc_sanitize_tooltip( $tip ) : esc_attr( $tip );
-
-			return sprintf( '<img class="help_tip" data-tip="%1$s" src="%2$s" height="16" width="16" />', $tip, esc_url( WC()->plugin_url() ) . '/assets/images/help.png' );
+			return apply_filters( 'woocommerce_get_cancel_order_url_raw', add_query_arg( array(
+				'cancel_order' => 'true',
+				'order'        => $order->order_key,
+				'order_id'     => $order->id,
+				'redirect'     => $redirect,
+				'_wpnonce'     => wp_create_nonce( 'woocommerce-cancel_order' )
+			), $cancel_endpoint ) );
 		}
 	}
 
@@ -125,47 +123,48 @@ class SV_WC_Plugin_Compatibility {
 
 
 	/**
-	 * Returns true if the installed version of WooCommerce is 2.5 or greater
+	 * Returns true if the installed version of WooCommerce is 2.3 or greater
 	 *
-	 * @since 4.2.0
-	 * @return boolean true if the installed version of WooCommerce is 2.5 or greater
+	 * @since 3.1.0
+	 * @return boolean true if the installed version of WooCommerce is 2.3 or greater
 	 */
-	public static function is_wc_version_gte_2_5() {
-		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.5', '>=' );
+	public static function is_wc_version_gte_2_3() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.3', '>=' );
 	}
 
 
 	/**
-	 * Returns true if the installed version of WooCommerce is less than 2.5
+	 * Returns true if the installed version of WooCommerce is less than 2.3
 	 *
-	 * @since 4.2.0
-	 * @return boolean true if the installed version of WooCommerce is less than 2.5
+	 * @since 3.1.0
+	 * @return boolean true if the installed version of WooCommerce is less than 2.3
 	 */
-	public static function is_wc_version_lt_2_5() {
-		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.5', '<' );
+	public static function is_wc_version_lt_2_3() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.3', '<' );
 	}
 
 
 	/**
-	 * Returns true if the installed version of WooCommerce is 2.6 or greater
+	 * Returns true if the installed version of WooCommerce is 2.4 or greater
 	 *
-	 * @since 4.4.0
-	 * @return boolean true if the installed version of WooCommerce is 2.6 or greater
+	 * @since 4.0.0
+	 * @return boolean true if the installed version of WooCommerce is 2.3 or greater
 	 */
-	public static function is_wc_version_gte_2_6() {
-		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.6', '>=' );
+	public static function is_wc_version_gte_2_4() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.4', '>=' );
 	}
 
 
 	/**
-	 * Returns true if the installed version of WooCommerce is less than 2.6
+	 * Returns true if the installed version of WooCommerce is less than 2.4
 	 *
-	 * @since 4.4.0
-	 * @return boolean true if the installed version of WooCommerce is less than 2.6
+	 * @since 4.0.0
+	 * @return boolean true if the installed version of WooCommerce is less than 2.4
 	 */
-	public static function is_wc_version_lt_2_6() {
-		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.6', '<' );
+	public static function is_wc_version_lt_2_4() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.4', '<' );
 	}
+
 
 	/**
 	 * Returns true if the installed version of WooCommerce is greater than $version

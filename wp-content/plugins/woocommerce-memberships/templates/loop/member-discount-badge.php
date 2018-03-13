@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * WooCommerce Memberships
  *
@@ -18,25 +18,22 @@
  *
  * @package   WC-Memberships/Templates
  * @author    SkyVerge
- * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2015, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Product loop Member Discount Badge
  *
- * @type \WP_Post $post Post object
- * @type \WC_Product $product Product object
- *
- * @version 1.6.4
  * @since 1.0.0
  */
-global $product;
 
-if ( wc_memberships_user_has_member_discount() ) :
+global $post, $product;
+?>
+<?php if ( wc_memberships_user_has_member_discount() ) : ?>
 
-	echo wc_memberships_get_member_discount_badge( $product );
+	<?php echo apply_filters( 'wc_memberships_member_discount_badge', '<span class="onsale wc-memberships-member-discount">' . esc_html__( 'Member discount!', WC_Memberships::TEXT_DOMAIN ) . '</span>', $post, $product ); ?>
 
-endif;
+<?php endif; ?>

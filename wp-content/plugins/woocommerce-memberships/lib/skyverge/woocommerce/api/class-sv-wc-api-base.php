@@ -18,11 +18,11 @@
  *
  * @package   SkyVerge/WooCommerce/API
  * @author    SkyVerge
- * @copyright Copyright (c) 2013-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2013-2015, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! class_exists( 'SV_WC_API_Base' ) ) :
 
@@ -95,11 +95,6 @@ abstract class SV_WC_API_Base {
 		$this->request = $request;
 
 		$start_time = microtime( true );
-
-		// If this API requires TLS v1.2, force it
-		if ( $this->require_tls_1_2() ) {
-			add_action( 'http_api_curl', array( $this, 'set_tls_1_2_request' ), 10, 3 );
-		}
 
 		// perform the request
 		$response = $this->do_remote_request( $this->get_request_uri(), $this->get_request_args() );
@@ -256,29 +251,6 @@ abstract class SV_WC_API_Base {
 			'body'    => $this->get_sanitized_response_body() ? $this->get_sanitized_response_body() : $this->get_raw_response_body(),
 		);
 
-		/**
-		 * API Base Request Performed Action.
-		 *
-		 * Fired when an API request is performed via this base class. Plugins can
-		 * hook into this to log request/response data.
-		 *
-		 * @since 2.2.0
-		 * @param array $request_data {
-		 *     @type string $method request method, e.g. POST
-		 *     @type string $uri request URI
-		 *     @type string $user-agent
-		 *     @type string $headers request headers
-		 *     @type string $body request body
-		 *     @type string $duration in seconds
-		 * }
-		 * @param array $response data {
-		 *     @type string $code response HTTP code
-		 *     @type string $message response message
-		 *     @type string $headers response HTTP headers
-		 *     @type string $body response body
-		 * }
-		 * @param \SV_WC_API_Base $this instance
-		 */
 		do_action( 'wc_' . $this->get_api_id() . '_api_request_performed', $request_data, $response_data, $this );
 	}
 
@@ -591,7 +563,7 @@ abstract class SV_WC_API_Base {
 
 
 	/**
-	 * Set a request header
+	 * Set a header request
 	 *
 	 * @since 2.2.0
 	 * @param string $name header name
@@ -601,21 +573,6 @@ abstract class SV_WC_API_Base {
 	protected function set_request_header( $name, $value ) {
 
 		$this->request_headers[ $name ] = $value;
-	}
-
-
-	/**
-	 * Set multiple request headers at once
-	 *
-	 * @since 4.3.0
-	 * @param array $headers
-	 */
-	protected function set_request_headers( array $headers ) {
-
-		foreach ( $headers as $name => $value ) {
-
-			$this->request_headers[ $name ] = $value;
-		}
 	}
 
 
@@ -666,47 +623,6 @@ abstract class SV_WC_API_Base {
 	 */
 	protected function set_response_handler( $handler ) {
 		$this->response_handler = $handler;
-	}
-
-
-	/**
-	 * Maybe force TLS v1.2 requests.
-	 *
-	 * @since 4.4.0
-	 */
-	public function set_tls_1_2_request( $handle, $r, $url ) {
-
-		if ( ! SV_WC_Helper::str_starts_with( $url, 'https://' ) ) {
-			return;
-		}
-
-		$versions     = curl_version();
-		$curl_version = $versions['version'];
-
-		// Get the SSL details
-		list( $ssl_type, $ssl_version ) = explode( '/', $versions['ssl_version'] );
-
-		$ssl_version = substr( $ssl_version, 0, -1 );
-
-		// If cURL and/or OpenSSL aren't up to the challenge, bail
-		if ( ! version_compare( $curl_version, '7.34.0', '>=' ) || ( 'OpenSSL' === $ssl_type && ! version_compare( $ssl_version, '1.0.1', '>=' ) ) ) {
-			return;
-		}
-
-		curl_setopt( $handle, CURLOPT_SSLVERSION, 6 );
-	}
-
-
-	/**
-	 * Determine if TLS v1.2 is required for API requests.
-	 *
-	 * Subclasses should override this to return true if TLS v1.2 is required.
-	 *
-	 * @since 4.4.0
-	 * @return bool
-	 */
-	protected function require_tls_1_2() {
-		return false;
 	}
 
 
