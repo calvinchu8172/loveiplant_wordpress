@@ -18,20 +18,18 @@
  *
  * @package   WC-Memberships/Templates
  * @author    SkyVerge
- * @copyright Copyright (c) 2014-2015, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Renders the tab sections on My Account page for a customer membership
  *
- * @param array $members_area_sections Associative array of members area sections to put in tabs
- * @param WC_Memberships_User_membership $customer_membership Object
- * @param string $current_section The current section displayed
+ * @type array $members_area_sections Associative array of members area sections to put in tabs
+ * @type \WC_Memberships_User_membership $customer_membership Object
+ * @type string $current_section The current section displayed
  *
  * @version 1.4.0
  * @since 1.4.0
@@ -46,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<ul class="my-membership-tabs">
 			<?php foreach ( $members_area_sections as $section => $name ) : ?>
 				<li class="my-membership-tab <?php echo esc_attr( $section ); ?>">
-					<?php if ( $section == $current_section ) : ?>
+					<?php if ( $section === $current_section ) : ?>
 						<span><?php echo esc_html( $name ); ?></span>
 					<?php else : ?>
 						<a href="<?php echo esc_url( wc_memberships_get_members_area_url( $customer_membership->get_plan_id(), $section ) ) ?>"><?php echo esc_html( $name ); ?></a>
