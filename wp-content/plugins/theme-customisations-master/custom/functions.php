@@ -40,6 +40,42 @@ function wc_register_form_password_repeat() {
 
 <?php
 /**
+ * Add a confirm password field to the checkout registration form.
+ */
+function o_woocommerce_confirm_password_checkout( $checkout ) {
+    if ( get_option( 'woocommerce_registration_generate_password' ) == 'no' ) {
+
+        $fields = $checkout->get_checkout_fields();
+
+        $fields['account']['account_confirm_password'] = array(
+            'type'              => 'password',
+            'label'             => __( '再次確認密碼，提醒您，密碼至少需要 7 個字元，其中包含英文字母與數字，英文字母至少 1 個大寫，並盡量不要連續數字或連續字母喔。', 'woocommerce' ),
+            'required'          => true,
+            'placeholder'       => _x( '確認密碼', 'placeholder', 'woocommerce' )
+        );
+
+        $checkout->__set( 'checkout_fields', $fields );
+    }
+}
+add_action( 'woocommerce_checkout_init', 'o_woocommerce_confirm_password_checkout', 10, 1 );
+
+/**
+ * Validate that the two password fields match.
+ */
+function o_woocommerce_confirm_password_validation( $posted ) {
+    $checkout = WC()->checkout;
+    if ( ! is_user_logged_in() && ( $checkout->must_create_account || ! empty( $posted['createaccount'] ) ) ) {
+        if ( strcmp( $posted['account_password'], $posted['account_confirm_password'] ) !== 0 ) {
+            wc_add_notice( __( 'Passwords do not match.', 'woocommerce' ), 'error' );
+        }
+    }
+}
+
+add_action( 'woocommerce_after_checkout_validation', 'o_woocommerce_confirm_password_validation', 10, 2 );
+?>
+
+<?php
+/**
  *Reduce the strength requirement on the woocommerce password.
  *
  * Strength Settings

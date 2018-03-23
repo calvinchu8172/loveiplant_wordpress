@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-14 23:42+0800\n"
+"PO-Revision-Date: 2018-03-23 21:38+0800\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -931,7 +931,7 @@ msgstr ""
 
 #: templates/myaccount/my-pre-orders.php:7
 msgid "My Pre-Orders"
-msgstr ""
+msgstr "我的預購清單"
 
 #: templates/myaccount/my-pre-orders.php:17
 msgid "Release Date"
@@ -939,7 +939,7 @@ msgstr ""
 
 #: templates/myaccount/my-pre-orders.php:53
 msgid "You have no pre-orders."
-msgstr ""
+msgstr "目前沒有預購商品。"
 
 #: woocommerce-pre-orders.php:278
 msgid "Configure"
